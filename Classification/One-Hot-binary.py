@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[10]:
-
-
 #Onehot　binary classification
 get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
@@ -24,6 +21,7 @@ t_group1=np.tile(0,(numofsam))
 t_group2=np.tile(1,(numofsam))
 T_vector=np.hstack((t_group1,t_group2))
 T=np.eye(len(np.unique(T_vector)))[T_vector]
+
 #Learning Setting
 def softmax(x):
     return np.exp(x)/np.sum(np.exp(x),axis=1,keepdims=True)
@@ -46,6 +44,7 @@ for i in range(iteration):
     dB=np.sum(Y-T,axis=0,keepdims=True)
     W=W-eta*dW
     B=B-eta*dB
+
 #Grid Setting
 x1_min=X[:,0].min()-1
 x1_max=X[:,0].max()+1
@@ -55,6 +54,7 @@ x1_grid=np.linspace(x1_min,x1_max,100)
 x2_grid=np.linspace(x2_min,x2_max,100)
 xx,yy=np.meshgrid(x1_grid,x2_grid)
 X_grid=np.c_[xx.reshape(-1),yy.reshape(-1)]
+
 #Result ploting
 Y_grid=softmax(np.dot(X_grid,W)+B)
 Y_grid_vector=np.argmax(Y_grid,axis=1)
@@ -77,16 +77,3 @@ plt.title("Loss Function",fontsize=25)
 plt.xlabel("Iteration Number",fontsize=18)
 plt.ylabel("Loss Value(E)",fontsize=18)
 plt.show()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-

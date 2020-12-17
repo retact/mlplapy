@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[12]:
-
-
 #One-hot classification
 get_ipython().run_line_magic('matplotlib', 'inline')
 import numpy as np
